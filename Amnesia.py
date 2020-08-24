@@ -1,3 +1,4 @@
+#Textová adventura. Je ve velmi rané fázi. Nemá v tuto chvíli žádný endgame
 sever=0
 východ=0
 inventar=["vzkaz"]
