@@ -1,3 +1,4 @@
+#1-D piškvorky proti počítači. Počítač má zatím pouze jednu strategii na umisťování svých tahů a stále nejsou přesně vymezené hranice, kam smí táhnout.
 from random import randrange, uniform
 retezec=("--------------------")
 cislo=0
