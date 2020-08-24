@@ -1,3 +1,4 @@
+#Pravděpodobně první ucelenější program. Velmi jednoduchá ruleta. Neumožňuje vsadit na více položek ani neobsahuje možnost vsadit na řady a podobně.
 from random import randrange, uniform
 print ("Ruleta")
 peníze = 500
