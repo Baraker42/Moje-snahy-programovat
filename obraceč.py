@@ -1,3 +1,4 @@
+#prográmek, který napíše slovo nebo větu pozpátku.
 print ("Obraceč slov")
 slovo = input("Napiš slovo ")
 delka = len(slovo)
