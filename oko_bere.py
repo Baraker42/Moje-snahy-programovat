@@ -1,3 +1,4 @@
+#Klasická hra Oko bere
 from random import randrange
 body = 0
 while body <21:
