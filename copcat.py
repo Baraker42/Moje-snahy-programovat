@@ -1,3 +1,4 @@
+#Základ většího projektu na základě Teorie her. Zatím pouze verze, která opakuje předchozí hráčův krok.
 print("copyCat")
 score=0
 score_pc=0
