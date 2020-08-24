@@ -1,3 +1,4 @@
+#Simulátor arény. Nejsou nijak zvláště vyladěné atributy jednotlivých aktivit, zatím jsem se spokojil s tím že to funguje.
 from random import randrange, uniform
 print ("Aréna")
 print ("Simulátor arény - tedy snad")
