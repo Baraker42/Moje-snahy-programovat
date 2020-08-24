@@ -1,3 +1,5 @@
+#Jeden z prvních vytvořených programů. Sčítá jednotlivé položky, řekne konečnou cenu, zeptá se na hodnotu, kterou platí zákazník a vypíše návratovou sumu.
+#nakonci dne zhodnotí obsah pokladny a vypíše průměrnou útratu za jeden nákup.
 print ("Pokladna 0.1 - Alfa verze")
 pokladna = int(input("Kolik je na začátku dne v pokladně? "))
 pokladna1=pokladna
@@ -7,7 +9,7 @@ pocet_zakazniku=0
 den="Další"
 while den =="Další":
     while cena !=0:
-        cena=int(input("Vlož cenu produktu. "))
+        cena=int(input("Vlož cenu produktu. "))#pokud není žádný další produkt třeba napsat "0"
         celkova_cena = celkova_cena + cena
     print("Nákup stojí", celkova_cena)
     platba = int(input("Zákazník platí "))
