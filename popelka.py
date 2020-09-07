@@ -9,7 +9,7 @@ while True:
     except:
         ValueError
         break
-print(sada)
+
 delka=len(sada)
 delka=delka-1
 odpocet=0
