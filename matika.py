@@ -4,35 +4,27 @@ import json
 from random import randrange
 chyba=0
 body=0
+celkovescore=[]
+
+
 if True:
     try:
         with open ("score.json") as f:
             data = json.load(f)
-        grog=data[0]
-        hraci=[]
-        for i in grog:
-            
-            hraci.append(i)
-        prev_score=[]
-        delka=len(hraci)
-        counter=0
-        while counter <delka:
-            hrac=hraci[counter]
-            score_hrace=grog[hrac]
-            prev_score.append(score_hrace)
-            counter=counter+1
-        
-        save=True
+        celkem=0
+        delka=len(data)
+        print("Highscores")
+        for i in data:
+            print(i)
+        while celkem<delka:
+            data1=(data[celkem])
+            celkovescore.append(data1)
+            celkem=celkem+1        
     except FileNotFoundError:
         save=False
-        
-        
-    
+       
 
 
-
-
-               
 while chyba == 0:
     cislo1=randrange(0,101)
     cislo2=randrange(0,101)
@@ -52,20 +44,25 @@ while chyba == 0:
         break
 print("Počet bodů je:", body)
 jmeno=input("Zadej své jméno ")
-celkovescore=[]
+
 score={}
-score[jmeno]=body
-if save == True:
-    counter=0
-    delka=len(hraci)
-    while counter <delka:
-        hrac=hraci[counter]
-        point=prev_score[counter]
-        score[hrac]=point
-        counter=counter+1
+score["Jmeno"]=jmeno
+score["Body"]=body
+
 
 celkovescore.append(score)
+def pocet_bodu(hrac):
+    return hrac.get('Body')
+celkovescore.sort(key=pocet_bodu, reverse=True)
+delka=len(celkovescore)
+if delka >= 10:
+    celkovescore.pop()
+    
 
-
+print("Highscores")
+for i in celkovescore:
+    print(i)
+    
 with open ("././/score.json", "w") as file:
     json.dump(celkovescore, file)
+
