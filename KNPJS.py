@@ -1,4 +1,5 @@
-from random import randrange, uniform
+#Hra Kámen, Nůžky, Papír obohacená o rozšíření ze seriálu TBBT.
+from random import randrange
 print("Kámen, nůžky, papír, ještěr, Spock")
 score=0
 stare_score=0
