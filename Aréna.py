@@ -1,7 +1,6 @@
-#Simulátor arény. Nejsou nijak zvláště vyladěné atributy jednotlivých aktivit, zatím jsem se spokojil s tím že to funguje.
-from random import randrange, uniform
+from random import randrange
 print ("Aréna")
-print ("Simulátor arény - tedy snad")
+print ("Simulátor arény")
 jmeno = input ("Pojmenuj svého válečníka ")
 print ("Vítej", jmeno, "vyber si zaměření.")
 print ("Vyber si zaměření")
