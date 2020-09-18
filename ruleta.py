@@ -23,6 +23,7 @@ while penize >= 0:
                     sazka=int(input("Kolik chceš vsadit "))
                     if sazka > penize:
                         print("Tolik peněz nemáš")
+                        continue
                     sazky_na_cisla.append(sazka)
                     penize=penize-sazka
                 except ValueError:
@@ -31,6 +32,7 @@ while penize >= 0:
                         sazka=int(input("Kolik chceš vsadit "))
                         if sazka > penize:
                             print("Tolik peněz nemáš")
+                            continue
                         sazky_na_cisla.append(sazka)
                         penize=penize-sazka
                     except ValueError:
@@ -42,7 +44,6 @@ while penize >= 0:
             pokracovat=input("Chceš vsadit na další? ")
         if volba not in ANO:
             break
-    print(vsazena_cisla)
     pokracovat="Ano"
     volba=input("Chceš vsadit na barvu? ")
     if volba in ANO:
@@ -54,6 +55,7 @@ while penize >= 0:
             sazka=int(input("Kolik chceš vsadit "))
             if sazka > penize:
                 print("Tolik peněz nemáš")
+                continue
             sazky_na_barvy.append(sazka)
             penize=penize-sazka
         except ValueError:
@@ -62,12 +64,12 @@ while penize >= 0:
                 sazka=int(input("Kolik chceš vsadit "))
                 if sazka > penize:
                     print("Tolik peněz nemáš")
+                    continue
                 sazky_na_barvy.append(sazka)
                 penize=penize-sazka
             except ValueError:
                 print("S tebou je to složitý")
                 break
-    print(vsazene_barvy)
     ruleta= randrange(0,37)
     if ruleta % 2 == 0:
         barva = "Červená"
