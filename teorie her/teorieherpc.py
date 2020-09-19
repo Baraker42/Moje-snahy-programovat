@@ -1,6 +1,6 @@
 import random
 from random import randrange
-from coppycac import copycat, hustler, jesus, idk, johnwick
+from ppth import copycat, hustler, jesus, idk, johnwick
 a=copycat
 b=hustler
 c=jesus
