@@ -1,4 +1,4 @@
-from random import randrange, uniform
+from random import randrange
 print ("Mendelovská genetika")
 genotyp1 = input ("Zadej genotyp 1 rodiče AA, Aa nebo aa ")
 genotyp2 = input ("Zadejte genotyp 2 rodiče AA, Aa nebo aa ")
