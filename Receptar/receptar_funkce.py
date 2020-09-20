@@ -1,5 +1,5 @@
 import json
-def nahled_receptu():
+def nahled_receptu(): #Tato funkce umožňuje náhledy do již existujících receptů
     try:
         with open ("recepty.json") as f:
                    data = json.load(f)
@@ -17,11 +17,11 @@ def nahled_receptu():
                 break
             except KeyError:
                 print("Takový recept tu nemám, zkus to ještě jednou")
-    except FileNotFoundError:
+    except FileNotFoundError: # Pokud dosud neexistuje složka recepty, upozorní uživatele, že musí nejprve nějaký recept založit
         print("Zatím nemám v databázi žádný recept. Nějaký nahraj a zkus to pak")
 
 
-def novy_recept():
+def novy_recept(): #Spustí tvorbu nového receptu
     suroviny=[]
     množství=[]
     surovina="nic"
@@ -53,7 +53,7 @@ def novy_recept():
         json.dump(recepty, file)
     print("Výborně! Nový recept",nazev,"byl uložen")
 
-def uprava_surovin():
+def uprava_surovin(): #Umožňuje upravit stávající množství surovin nebo přidat suroviny nové
     try:
         with open ("suroviny.json") as file:
             data=json.load(file)
@@ -112,7 +112,7 @@ def uprava_surovin():
 
     with open ("././/suroviny.json", "w") as file:
        json.dump(celkove_suroviny, file)
-def vareni():
+def vareni(): #Spustí proces "vaření". Po zadání receptu odečte ze surovin množství, které bylo pro vaření potřeba.
     try:
         with open ("recepty.json") as f:
                    recepty = json.load(f)
