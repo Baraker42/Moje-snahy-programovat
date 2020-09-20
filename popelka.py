@@ -4,7 +4,7 @@ ostatni=[]
 prvocisla=[]
 while True:
     try:
-        num=int(input("vlož číslo "))
+        num=int(input("Vlož číslo "))
         sada.append(num)
     except:
         ValueError
@@ -14,8 +14,7 @@ delka=len(sada)
 delka=delka-1
 odpocet=0
 
-while odpocet <=delka:
-    cislo=sada[odpocet]
+for cislo in sada:
     delitel=1
     poz=0
     
@@ -46,6 +45,7 @@ while odpocet <=delka:
 
 print("Neprvočísla", ostatni)
 print("Prvočísla", prvocisla)
+input()
 
 
                     
