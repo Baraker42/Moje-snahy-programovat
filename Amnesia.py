@@ -56,10 +56,10 @@ while True:
         if východ == -10:
             print("Odešel by jsi z lesa, ale ještě máš nedořešené nějaké záležitosti")
             východ = východ + 1
-    if sever == 5 and východ ==6:
+    if sever == 5 and východ ==6: #Chata
         print("Stojíš před chatou")
         ans=input("Chceš vstoupit? ")
-        if ans == "ano" and "klic" in inventar:
+        if ans == "ano" and "klic" in inventar: 
             print("""Odemkl jsi chatu")
 Vstoupil jsi do místnosti. Je modernější než by se mohlo zdát podle vzhledu chalupy.uprostřed místnosti je stůl,
 na stole je počítač. Vlevo od tebe jsou dveře. Napravo je skříň.""")
@@ -133,7 +133,7 @@ Dobře, "J" to není. Ale co se stalo tomuhle chudákovi? Zjevně tu není bezpe
             telo=1
     if sever == -3 and východ ==-3 and telo ==1:
         print("Stojíš před mrtvým Alešem Vybíralem. Je k nevíře, že jsi v první chvíli myslel, že jen spí. Kdo to proboha udělal?")
-    if sever ==-7 and východ == 7:
+    if sever ==-7 and východ == 7: #Oběšenec
         if telo == 1:
             print("Proboha! Další mrtvola! Tentokrát je to oběšenec. Pomohl mu někdo nebo je to jen shoda okolností?")
         if telo == 0:
@@ -161,9 +161,9 @@ ani jsi na něm neobjevil stopy po násilí. Přesunul jsi mladíka ke stromu, s
                   
             
 
-    if sever == -8 and východ == -8:
+    if sever == -8 and východ == -8: #Varování
         print(""" Narazil jsi na ceduli "Nacházíte se ve vojenském prostoru. Neprodleně opusťte tuto oblast!!!" Kde to k sakru ,jsi?! """)
-    if sever == 8 and východ == 8:
+    if sever == 8 and východ == 8: #Varování
         print(""" Narazil jsi na ceduli "Nacházíte se ve vojenském prostoru. Neprodleně opusťte tuto oblast!!!" Kde to k sakru ,jsi?! """)
 
     
