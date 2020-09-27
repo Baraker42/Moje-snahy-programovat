@@ -9,7 +9,7 @@ obesenec=0
 
 
 
-inventar=["vzkaz"]
+inventar=["vzkaz","klic"]
 print("""Vítejte ve textové adventuře Amnesia. Hra se ovládá příkazy napsáním příkazů. Základní příkazy jsou
 "jdi na sever","jdi na východ","jdi na jih","jdi na západ", které slouží k pohybu po mapě. Příkaz "inventář" vypíše obsah inventáře.
 Příkaz "souřadnice" vypíše současné souřadnice postavy. Příkaz "prozkoumat" vyvolá interanci s objektem
@@ -56,14 +56,24 @@ while True:
         if východ == -10:
             print("Odešel by jsi z lesa, ale ještě máš nedořešené nějaké záležitosti")
             východ = východ + 1
-    if sever == 5 and východ ==6: #Chata
+    if sever == 5 and východ ==6:
         print("Stojíš před chatou")
         ans=input("Chceš vstoupit? ")
-        if ans == "ano" and "klic" in inventar: 
+        if ans == "ano" and "klic" in inventar:
             print("""Odemkl jsi chatu")
-Vstoupil jsi do místnosti. Je modernější než by se mohlo zdát podle vzhledu chalupy.uprostřed místnosti je stůl,
-na stole je počítač. Vlevo od tebe jsou dveře. Napravo je skříň.""")
-            ans=input("Co uděláš? (Z)kontrolovat stůl, (PR)ohlédnout počítač, (P)rohledat skříň, (O)tevřít dveře")
+Vstoupil jsi do místnosti. Je modernější než by se mohlo zdát podle vzhledu chalupy. Uprostřed místnosti je stůl,
+na stole je počítač. Vlevo od tebe jsou dveře. Napravo je skříň. Naproti dveřím je obraz.""")
+            ans=input("Co uděláš? (Z)kontrolovat stůl, (PR)ohlédnout počítač, (P)rohledat skříň, (O)tevřít dveře, (PO)dívat se na obraz")
+            if ans == "Z":
+                print("Přistoupil jsi ke stolu. Na stole jsou fotografie moderního vězeňského zařízení.")
+            if ans == "PR":
+                print("Sedl jsi si opatrně k počítači. Stále nevíš jestli tě někdo sleduje. Počítač vyžaduje heslo.")
+                heslo=input("Zadej heslo: ")
+                if heslo !="Sofie":
+                    print("Heslo je nesprávné")
+                else:
+                    print("Fungovalo to! Jsi v systému. Ale co tu vlastně hledáš?")
+                      
         if ans =="ano" and "klic" not in inventar:
             print("Chata je zamčená")
             
@@ -133,7 +143,7 @@ Dobře, "J" to není. Ale co se stalo tomuhle chudákovi? Zjevně tu není bezpe
             telo=1
     if sever == -3 and východ ==-3 and telo ==1:
         print("Stojíš před mrtvým Alešem Vybíralem. Je k nevíře, že jsi v první chvíli myslel, že jen spí. Kdo to proboha udělal?")
-    if sever ==-7 and východ == 7: #Oběšenec
+    if sever ==-7 and východ == 7:
         if telo == 1:
             print("Proboha! Další mrtvola! Tentokrát je to oběšenec. Pomohl mu někdo nebo je to jen shoda okolností?")
         if telo == 0:
@@ -161,9 +171,9 @@ ani jsi na něm neobjevil stopy po násilí. Přesunul jsi mladíka ke stromu, s
                   
             
 
-    if sever == -8 and východ == -8: #Varování
+    if sever == -8 and východ == -8:
         print(""" Narazil jsi na ceduli "Nacházíte se ve vojenském prostoru. Neprodleně opusťte tuto oblast!!!" Kde to k sakru ,jsi?! """)
-    if sever == 8 and východ == 8: #Varování
+    if sever == 8 and východ == 8:
         print(""" Narazil jsi na ceduli "Nacházíte se ve vojenském prostoru. Neprodleně opusťte tuto oblast!!!" Kde to k sakru ,jsi?! """)
 
     
