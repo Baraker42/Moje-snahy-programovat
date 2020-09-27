@@ -1,5 +1,5 @@
 from random import randrange
-from eventy import amnesia_udalosti
+from udalost import amnesia_udalosti
 
 print("Amnesia alfaverze")
 sever=0
