@@ -1,12 +1,13 @@
 from random import randrange
-from udalost import amnesia_udalosti
+from amnesia_udalosti import udalost, sklep
 
 print("Amnesia alfaverze")
-sever=0
-východ=0
+sever=5
+východ=6
+
 telo=0
 obesenec=0
-
+odemceno=False
 
 
 inventar=["vzkaz","klic"]
@@ -60,19 +61,42 @@ while True:
         print("Stojíš před chatou")
         ans=input("Chceš vstoupit? ")
         if ans == "ano" and "klic" in inventar:
-            print("""Odemkl jsi chatu")
+            print("""Odemkl jsi chatu.
 Vstoupil jsi do místnosti. Je modernější než by se mohlo zdát podle vzhledu chalupy. Uprostřed místnosti je stůl,
 na stole je počítač. Vlevo od tebe jsou dveře. Napravo je skříň. Naproti dveřím je obraz.""")
-            ans=input("Co uděláš? (Z)kontrolovat stůl, (PR)ohlédnout počítač, (P)rohledat skříň, (O)tevřít dveře, (PO)dívat se na obraz")
-            if ans == "Z":
-                print("Přistoupil jsi ke stolu. Na stole jsou fotografie moderního vězeňského zařízení.")
-            if ans == "PR":
-                print("Sedl jsi si opatrně k počítači. Stále nevíš jestli tě někdo sleduje. Počítač vyžaduje heslo.")
-                heslo=input("Zadej heslo: ")
-                if heslo !="Sofie":
-                    print("Heslo je nesprávné")
-                else:
-                    print("Fungovalo to! Jsi v systému. Ale co tu vlastně hledáš?")
+            while ans != "odejít":
+                ans=input("Co uděláš? (Z)kontrolovat stůl, (PR)ohlédnout počítač, (P)rohledat skříň, (O)tevřít dveře, (PO)dívat se na obraz, (odejít)")
+                if ans == "Z":
+                    print("Přistoupil jsi ke stolu. Na stole jsou fotografie moderního vězeňského zařízení.")
+                if ans == "PR":
+                    print("Sedl jsi si opatrně k počítači. Stále nevíš jestli tě někdo sleduje. Počítač vyžaduje heslo.")
+                    heslo=input("Zadej heslo: ")
+                    if heslo !="Sofie":
+                        print("Heslo je nesprávné")
+                    else:
+                        print("Fungovalo to! Jsi v systému. Ale co tu vlastně hledáš?")
+                if ans == "O" and odemceno == False:
+                    print("Přišel jsi ke dveřím. Jsou zamčené. Vedle nich je číselník. Můžeš zkusit zadat kód.")
+                    kod=input("Zadej kód")
+                    if kod == "1987":
+                        print("Skvělé! Dveře se odemknuly. Za dveřmi jsou schody. Přeješ si sejít dolů?")
+                        odemceno=True
+                        ans=input("Ano/Ne")
+                        if ans== "Ano":
+                            sklep()
+                    else:
+                        print("Přístup odepřen")
+                if ans =="O" and odemceno == True:
+                    print("Za dveřmi jsou schody dolů. Přeješ si vstoupit do sklepa?")
+                    ans=input("Ano/Ne")
+                    sklep()
+                if ans == "PO":
+                    print("Na obraze je stejná dívka jako na fotografii, jen podstatně starší. Ale šaty má úplně stejné. Jak jen se jmenovala?")
+                if ans == "P":
+                    print("""Skříň někdo zavřel přiliš silně a nešla otevřít. Pomocí páčidla se ti to ovšem podařilo. Těch odřenin si nikdo nevšime. A když ano,
+ty budeš už dávno pryč. Hmm... ve skříni nic zajímavého není. Pár starých kabátů, jedny šaty, pak další kabáty... počkat! Ty šaty jsou
+stejné jako měla ta dívka na fotografii! Děje se tu něco hodně divného. Co tu ještě je? A vida. V krabici od bot někdo nechal zásobník.""")
+                    inventar.append("zásobník")
                       
         if ans =="ano" and "klic" not in inventar:
             print("Chata je zamčená")
@@ -93,7 +117,7 @@ a červených šatech s bílými puntíky. Na druhé straně fotografie stojí :
                         if ans=="ano" or "Ano":
                             inventar.append("klic")
                             inventar.append("flashka")
-                            inventar.append("fotografie")
+                            inventar.append("fotografie(Sofie,1987)")
                             print("Předměty, klíč, flash disk a fotografie byly umístěny do inventáře")
                 elif ans=="prozkoumat"  and "lano" not in inventar:
                         print("Nemáš se jak bezpečně dostat dolu a nahoru. Chtělo by to nějaké lano")
@@ -111,16 +135,16 @@ a červených šatech s bílými puntíky. Na druhé straně fotografie stojí :
         ans=input("Co uděláš? ")
         if ans==prozkoumat:
             print("Se sudem nejde pořádně hnout, je pevně zaražený do země. Jeho víko by nicméně šlo nějak (O)tevřít")
-            ans2=input("Co uděláš? ")
-            if ans2== "O" and "páčidlo" in inventar:
+            ans=input("Co uděláš? ")
+            if ans== "O" and "páčidlo" in inventar:
                 print("""Vzal jsi páčidlo a po chvíli se ti podařilo víko sundat. Na dně sudu se nachází baterka, pistole a plastová kartička
 Po bližším ohledání zjistíš že pistole je vybitá. Na kartičce není žádný text, patrně je uvnitř nějaký čip.""")
-                ans3=input("Přeješ si předměty umístit do inventáře? (ano)/(ne)")
-                if ans3 == "ano":
+                ans=input("Přeješ si předměty umístit do inventáře? (ano)/(ne)")
+                if ans == "ano":
                     inventar.append("baterka")
                     inventar.append("pistole")
                     inventar.append("plastová kartička")
-            if ans2=="O" and "páčidlo" not in intentar:
+            if ans=="O" and "páčidlo" not in intentar:
                 print("Bohužel nemáš nic, čím by to šlo vypáčit")
                     
         
@@ -137,8 +161,8 @@ Může to být ´J.´ ze vzkazu?""")
             if ans=="ano":
                     print("""Opatrně vsuneš ruku pod kabát a v náprsní kapse objevíš navštívenku Aleš Vybíral, investigativní reportér")
 Dobře, "J" to není. Ale co se stalo tomuhle chudákovi? Zjevně tu není bezpečno. Nic jiného jsi u něho neobjevil. Doklady, mobil, nic.""")
-            ans2=input("Chceš si vzít nůž? (ano)/(ne) ")
-            if ans2 =="ano":
+            ans=input("Chceš si vzít nůž? (ano)/(ne) ")
+            if ans =="ano":
                 inventar.append("nůž")
             telo=1
     if sever == -3 and východ ==-3 and telo ==1:
@@ -152,17 +176,17 @@ Dobře, "J" to není. Ale co se stalo tomuhle chudákovi? Zjevně tu není bezpe
         if ans=="prozkoumat":
             print("""Při bližším ohledání zjistíš, že jde o dobře oblečeného mladíka. Proč by šel do hlubokého lesa, aby se oběsil? Nikde není žádné zavazadlo,
 které by přinesl s sebou. Jeden konec lana je uvázaný kolem kmenu stromu, druhý přehozen přes silnou větev a pod ní visí na smyčce zmíněný mladík.""")
-            ans2== input("Přeješ si oběšence odvázat? (ano)/(ne) ")
-            if ans2 == ano and "nůž" in inventar:
+            ans== input("Přeješ si oběšence odvázat? (ano)/(ne) ")
+            if ans == ano and "nůž" in inventar:
                 print("""Provaz je přiliš napnutý, na to aby šel odvázat. Máš u sebe však nůž, kterým šel provaz přeříznout. Opatrně spouštíš mladíka na zem. Nemá
 u sebe nic. co by mohlo být jakýmkoliv způsobem užitečné. """)
-                ans3=input ("Chceš si vzít provaz? (ano)/(ne)" )
-                if ans3== "ano":
+                ans=input ("Chceš si vzít provaz? (ano)/(ne)" )
+                if ans== "ano":
                     print("""Dalo ti to sice dost práce, aby jsi provaz sundal, ale nakonec se ti to podařilo. Mladík se pravděpodobně nezabil sám, ale
 ani jsi na něm neobjevil stopy po násilí. Přesunul jsi mladíka ke stromu, smotal lano a pokračuješ v cestě.""")
                     inventar.append("lano")
                     obesenec=1
-            if ans2 == ano and "nůž" not in inventar:
+            if ans == ano and "nůž" not in inventar:
                 print("""Provaz je příliš napnutý, aby jsi ho mohl snadno rozvázat. Potřebuješ něco, čím provaz přeřízneš""")
                 
     if sever == -7 and východ ==7 and obesenec ==1:
