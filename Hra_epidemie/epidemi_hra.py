@@ -9,14 +9,18 @@ vakcina=0
 zdravotnictví=50
 testovani=0
 nespokojenost=0
+prevence=[]
+kolaps=5
 izolace=False
 
 cislo=int(input("Napiš číslo" ))
 set_1=zalozeni(cislo)
 while True:
-    den(set_1,testovani,izolace) #spustí funkci "den" na spočítání nových stavů občanů
+    pastika=den(set_1,testovani,izolace,prevence,kolaps) #spustí funkci "den" na spočítání nových stavů občanů
     nakazeni=[]
     zemrely=[]
+    kolaps=pastika[1]
+    print(pastika)
     for i in set_1: #vytvoří bilaci za posledni den
         nakazen=i["testovany"]
         zemrel=i["status"]
@@ -26,9 +30,10 @@ while True:
     pocet_zemrelych=zemrely.count("Mrtvý")
     print("Počet pozitivně testovaných", ano)
     print("Počet zemřelých",pocet_zemrelych)
-    vysledek=opatreni(izolace,testovani) #Spustí funkci opatreni - funguje jako maznažerské rozhraní, kde se udávají příkazy
+    vysledek=opatreni(izolace,testovani,prevence) #Spustí funkci opatreni - funguje jako maznažerské rozhraní, kde se udávají příkazy
     izolace=vysledek[0]
     testovani=vysledek[1]
+    prevence=vysledek[2]
     
 
 #distribuce roušek nebo respirátoru je dlouhodobě dražší než informovat lidi o

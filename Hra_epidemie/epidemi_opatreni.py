@@ -1,4 +1,4 @@
-def opatreni(izolace,testovani):
+def opatreni(izolace,testovani,prevence):
     #print("Rozpočet",rozpocet)
     
     #print("Počet zemřelých", zemrely")
@@ -19,7 +19,10 @@ def opatreni(izolace,testovani):
                 izolace=True              
         if volba =="Konec":
             break
+        if volba == "Prevence":
+            zmena = input("Přejete si zavést povinné roušky/respirátory")
+            prevence.append(zmena)
         
         print(izolace)
-    return(izolace,testovani)
+    return(izolace,testovani,prevence)
         

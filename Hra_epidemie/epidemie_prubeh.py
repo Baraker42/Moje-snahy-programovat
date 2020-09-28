@@ -21,20 +21,21 @@ def zalozeni (cislo):
         jedinec["status"]="Živý"
         jedinec["stav"]="OK"
         jedinec["karantena"]=False
+        jedinec["dní v kritickém stavu"]=0
     return(set_1)
         
 
     
 
 
-def den (set_1,testovani,izolace):
+def den (set_1,testovani,izolace,prevence,kolaps):
     while True:
         zdravotnictvi=500        
         riziko=100    
         delka=len(set_1)
         celkem=0
         izolace=izolace
-        opatreni=""
+        
        
         
         while delka > celkem: #vybere každou osobu ze setu
@@ -55,10 +56,15 @@ def den (set_1,testovani,izolace):
                    update_karanteny={"karantena":True}
                    
               
-            if opatreni == "roušky":
+            if "roušky" in prevence:
                 rouska=osoba["rouška"]
-                rousky_vsem={"rouška":"respirator"}
+                rousky_vsem={"rouška":"rouška"}
                 osoba.update(rousky_vsem)
+            if "respirátory" in prevence:
+                rouska=osoba["rouška"]
+                rousky_vsem={"rouška":"respirátor"}
+                osoba.update(rousky_vsem)
+                
             rouska=osoba["rouška"]
             imunni=osoba["imunita"]
             celkem1=celkem+1
@@ -108,18 +114,28 @@ def den (set_1,testovani,izolace):
                 if zhorseni<5:
                     novy_stav={"stav":"Vážný","karantena":True,"odhalený":True}
                     zdravotnictvi=zdravotnictvi-1
-                    
                     osoba.update(novy_stav)
-            if stav == "Vážný":
+
+          
+                 
+            if (stav == "Vážný" and zdravotnictvi <=0) or stav =="Kritický":
+                v_krizi=osoba["dní v kritickém stavu"]
+                v_krizi=v_krizi+1
+                krize={"stav":"Kritický","dní v kritickém stavu":v_krizi}
+                osoba.update(krize)
+                kolaps=kolaps+1
+                    
+                    
+            if stav == "Vážný" or "Kritický":
                 zhorseni=randrange(0,100)
-                if zhorseni<5:
+                if zhorseni<kolaps:
                     zemrel={"status":"Mrtvý"}
                     osoba.update(zemrel)
-                    
                     zdravotnictvi=zdravotnictvi+1
                 if zhorseni>80:
                     zlepseni={"stav":"OK"}
                     osoba.update(zlepseni)
+                    zdravotnictvi=zdravotnictvi+1
           
             
             
@@ -143,9 +159,10 @@ def den (set_1,testovani,izolace):
         
         
        
-        
+        kolaps=kolaps+1
         celkem=0
-        return(set_1)
+        
+        return(set_1,kolaps)
 
 
         
