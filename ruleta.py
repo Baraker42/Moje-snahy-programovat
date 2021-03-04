@@ -1,3 +1,4 @@
+#Jeden z prvních projektů, které jsem si vymyslel a naprogramoval, předpokládám, že dnes už bych postupoval podstatně odlišně
 from random import randrange
 print ("""Zjednodušená verze hazardní hry Ruleta. Umožňuje vsadit na libovolný počet
 čísel a jednu barvu. Neumožňuje sázky na řady a sloupce""")
